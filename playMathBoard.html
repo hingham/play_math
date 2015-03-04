@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <title>Play Math</title>
+  <link rel="stylesheet" type="text/css" href="mainMathBoard.css"
+</head>
+
+<body>
+  <ul id="hundredBoard">
+
+  </ul>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+function Number(n, m) {
+  this.number = n;
+  this.identification = m;
+  this.toHTML = function() {
+    return "<li class='boardNum' id=' " + m + " '>" + " " + this.number + " " + "</li>"
+    }
+  }
+
+
+  var testArray = [ {id: 1},  {id: 2}];
+
+  console.log(testArray);
+
+  function hundredBoard () {
+    var board = this;
+    var numArray = [];
+      for (var i = 1; i<=100; i++){ 
+        numArray.push(i)
+      }
+    this.numbers = numArray;
+
+    $.each(board.numbers, function(){
+      var num = this;
+      var id = num;
+      var number = new Number(num, id);
+      $('#hundredBoard').append(number.toHTML());
+    });
+  }
+
+
+
+  var board = new hundredBoard();
+
+
+
+
+
+
+
+</script>
