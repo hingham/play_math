@@ -2,55 +2,79 @@
 <html>
 <head>
   <title>Play Math</title>
-  <link rel="stylesheet" type="text/css" href="mainMathBoard.css"
+  <link rel="stylesheet" type="text/css" href="mainMathBoard.css">
+<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+
+
 </head>
 
 <body>
-  <ul id="hundredBoard">
+<h1> Skip Count: 2's </h1>
 
-  </ul>
+<div class="wrapper">
+    <section id="hundredBoard">
+    </section>
+ </div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
-function Number(n, m) {
-  this.number = n;
-  this.identification = m;
-  this.toHTML = function() {
-    return "<li class='boardNum' id=' " + m + " '>" + " " + this.number + " " + "</li>"
-    }
-  }
-
-
-  var testArray = [ {id: 1},  {id: 2}];
-
-  console.log(testArray);
-
-  function hundredBoard () {
-    var board = this;
-    var numArray = [];
-      for (var i = 1; i<=100; i++){ 
-        numArray.push(i)
+  function Number(n, m) {
+    this.number = n;
+    this.identification = m;
+    this.toHTML = function() {
+      return "<button class='boardNum'  id=' " + m + " '>" + " " + this.number + " " + "</button>"
       }
-    this.numbers = numArray;
+    }
 
-    $.each(board.numbers, function(){
-      var num = this;
-      var id = num;
-      var number = new Number(num, id);
-      $('#hundredBoard').append(number.toHTML());
+    function hundredBoard () {
+      var board = this;
+      var numArray = [];
+        for (var i = 1; i<=100; i++){ 
+          numArray.push(i)
+        }
+      this.numbers = numArray;
+
+      $.each(board.numbers, function(){
+        var num = this;
+        var id = num;
+        var number = new Number(num, id);
+        $('#hundredBoard').append(number.toHTML());
+      });
+    }
+
+
+
+    var board = new hundredBoard();
+
+    $('button.boardNum').click(function() {
+     
+
+      var multiple = parseInt(this.id); 
+      if (multiple%2 === 0) {
+        $(this).css({background:"rgb(210, 255, 150)"});
+      }
+      else {
+      //    $(this).({
+      //    background: "red"});
+
+    $(this).animate({
+    opacity: 0.15,
+    background: "rgb(255, 255, 255)"
+    }, 100, function() {
+    })
+    .animate({
+    opacity: 1,
+    }, 120, function() {
     });
   }
-
-
-
-  var board = new hundredBoard();
-
+});
 
 
 
 
 
-
-</script>
+  </script>
+ 
+</body>
